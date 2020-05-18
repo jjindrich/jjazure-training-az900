@@ -34,8 +34,8 @@ az vm create -n covmjump -g rg-covmjump --image win2019datacenter --admin-userna
 Web application Movie App List
 
 - dotNet Core web with mySql database
-- Source code - [movie-app-list](/src/movie-app-list)
-- configuration - [appsettings.json](/src/movie-app-list/appsettings.json)
+- Source code - [movie-app-list](/source/movie-app-list)
+- configuration - [appsettings.json](/source/movie-app-list/appsettings.json)
 - compiled binaries - [movie-app-list](/bin/movie-app-list)
 
 ### Deploy application to Azure infrastructure services
