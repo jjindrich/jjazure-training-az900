@@ -29,7 +29,7 @@ az group create -n rg-co-vmjump -l westeurope
 az vm create -n covmjump -g rg-co-vmjump --image win2019datacenter --admin-username azureuser
 ```
 
-Install Edge browser, Azure CLI and VS Code into your Azure workstation
+Install Edge browser, Azure CLI, VS Code, MySql Workbench into your Azure workstation
 
 ```powershell
 Invoke-WebRequest "https://c2rsetup.officeapps.live.com/c2r/downloadEdge.aspx?ProductreleaseID=Edge&platform=Default&version=Edge&source=EdgeStablePage&Channel=Stable&language=en" -OutFile MicrosoftEdgeSetup.exe
@@ -37,6 +37,10 @@ Invoke-WebRequest "https://c2rsetup.officeapps.live.com/c2r/downloadEdge.aspx?Pr
 Invoke-WebRequest "https://aka.ms/installazurecliwindows" -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; rm .\AzureCLI.msi
 Invoke-WebRequest "https://go.microsoft.com/fwlink/?Linkid=852157" -OutFile VSCodeSetup-x64.exe
 .\VSCodeSetup-x64.exe /silent
+Invoke-WebRequest "https://aka.ms/vs/16/release/vc_redist.x64.exe" -OutFile vc_redist.x64.exe
+.\vc_redist.x64.exe
+Invoke-WebRequest "https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-8.0.20-winx64.msi" -OutFile mysql-workbench.msi
+.\mysql-workbench.msi
 ```
 
 ### Explore application source code
@@ -69,8 +73,8 @@ az deployment group create -n Network -g rg-co-network --template-file deploy.js
 
 **Deploy web application** with Azure Portal
 
-- create new Windows 2019 virtual machine cowmwebwin in resource group rg-vmwebwin *without publicIP and no public ports* network vnet-comain
-- create new Ubuntu 18.04 virtual machine cowmweblx in resource group rg-vmweblx *without publicIP and no public ports* network vnet-comain
+- create new Windows 2019 virtual machine cowmwebwin in resource group rg-co-vmwebwin *without publicIP and no public ports* network vnet-comain
+- create new Ubuntu 18.04 virtual machine cowmweblx in resource group rg-co-vmweblx *without publicIP and no public ports* network vnet-comain
 - install application on Windows - https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis
     1. install IIS and ASP.NET Core Runtime Windows Hosting Bundle Installer
     2. configure IIS site
@@ -81,17 +85,38 @@ az deployment group create -n Network -g rg-co-network --template-file deploy.js
     3. configure service for app
     4. configure Nginx
 
-Check website is running http://<your_win_or_lx>. It's getting error because missing database.
+Check website is running http://<your_win_or_lx>  from your workstation. It's getting error because missing database.
 
 ![Web homepage](/src/az-vmweb/web-running.png)
 
 ### Deploy database as Azure platform services
 
-TODO: deploy DB mySql, change connection string
+Create new Azure Database for MySQL and connect app
 
-### Extend application deployment
+- name comysql in resource group rg-co-sql
+- enable firewall - Allow access to Azure services
+- deploy database [create script](/src/az-sql/init.sql) using MySql Workbench - create database and table
+- change connection string on web server - change appsettings.json MovieContext to your ADO.Net connection string
 
-TODO: Load balancer and backend VM
+Check website is running http://<your_win_or_lx> from your workstation. You can create new record.
+
+![Web homepage](/src/az-sql/sql-running.png)
+
+*Hint: Enable Development mode for troubleshootings - set [Environment variable](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/aspnet-core-module?#set-environment-variables)*
+
+Advanced scenarios
+
+- allow private communication with database - Private Endpoint to get private Ip
+
+### Publish web
+
+There are different options how to publish web to internet
+
+- Azure LoadBalancer - L4 load balancer
+- Azure Application Gateway - L7 HTTP/HTTPS loadbalancer
+- Azure FrontDoor - global HTTP/HTTPS loadbalancer
+
+Check website is running http://<your_lb_> from internet.
 
 ### Modernize application to Azure platform services
 
