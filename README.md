@@ -104,7 +104,7 @@ Check website is running http://<your_win_or_lx> from your workstation. You can 
 
 *Hint: Enable Development mode for troubleshootings - set [Environment variable](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/aspnet-core-module?#set-environment-variables)*
 
-Advanced scenarios
+**Advanced scenarios**
 
 - allow private communication with database - Private Endpoint to get private Ip
 
@@ -117,6 +117,12 @@ There are different options how to publish web to internet
 - Azure FrontDoor - global HTTP/HTTPS loadbalancer
 
 Check website is running http://<your_lb_> from internet.
+
+*Hint: Remember to update NSG rule to allowcHTTP traffic from Internet*
+
+**Advanced scenarios**
+
+- create DNS zone - use Azure DNS to get public zone
 
 ### Modernize application to Azure platform services
 
