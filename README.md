@@ -19,8 +19,24 @@ List of labs
 
 ### Deploy Windows jump server
 
-TODO: VM WIN jump
-TODO: download application https://github.com/do-community/movie-app-list
+Deploy new Windows Server 2019 as workstation
+
+- use Azure portal - create new server with public IP address
+- use following script
+
+```bash
+az group create -n rg-covmjump -l westeurope
+az vm create -n covmjump -g rg-covmjump --image win2019datacenter --admin-username azureuser
+```
+
+### Explore application source code
+
+Web application Movie App List
+
+- dotNet Core web with mySql database
+- Source code - [movie-app-list](/src/movie-app-list)
+- configuration - [appsettings.json](/src/movie-app-list/appsettings.json)
+- compiled binaries - [movie-app-list](/bin/movie-app-list)
 
 ### Deploy application to Azure infrastructure services
 
