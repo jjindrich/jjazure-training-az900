@@ -156,3 +156,7 @@ Now let's check Function processing logs
 - check Logs and wait for event "action": "Microsoft.Compute/virtualMachines/start/action"
 
 ![Function log](/src/az-func/func-event.png)
+
+**Advanced scenarios**
+
+- process file uploaded to Azure Blob Storage (e.g. save to another destination)
