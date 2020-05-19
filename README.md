@@ -137,6 +137,22 @@ Create new Azure Web App and configure application deployment
 
 Check website is running https://cowebapp.azurewebsites.net/ from internet.
 
-### Extend application
+### Extend application - trigger event
 
-TODO: Function with EventGrid
+Create new Azure Function
+
+- name cofunc in resource group rg-co-func with .Net Core 3.1 on Windows (because of Portal development)
+- create new function ProcessTrigger with Event Grid trigger and check Code+Test blade
+
+Configure Trigger subscription fired when VM is started
+
+- select resource group containing VM and select Events
+- configure Event subscription with Endpoint Type = Azure Function and select our Function ProcessTrigger
+
+Now let's check Function processing logs
+
+- open Azure Function ProcessTrigger and navigate to Monitor section
+- now start VM (other browser window)
+- check Logs and wait for event "action": "Microsoft.Compute/virtualMachines/start/action"
+
+![Function log](/src/az-func/func-event.png)
