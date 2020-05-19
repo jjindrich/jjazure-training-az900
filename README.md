@@ -29,7 +29,7 @@ az group create -n rg-co-vmjump -l westeurope
 az vm create -n covmjump -g rg-co-vmjump --image win2019datacenter --admin-username azureuser
 ```
 
-Install Edge browser, Azure CLI, VS Code, MySql Workbench into your Azure workstation
+Install Edge browser, Azure CLI, VS Code, MySql Workbench, WinScp into your Azure workstation
 
 ```powershell
 Invoke-WebRequest "https://c2rsetup.officeapps.live.com/c2r/downloadEdge.aspx?ProductreleaseID=Edge&platform=Default&version=Edge&source=EdgeStablePage&Channel=Stable&language=en" -OutFile MicrosoftEdgeSetup.exe
@@ -41,6 +41,8 @@ Invoke-WebRequest "https://aka.ms/vs/16/release/vc_redist.x64.exe" -OutFile vc_r
 .\vc_redist.x64.exe
 Invoke-WebRequest "https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-8.0.20-winx64.msi" -OutFile mysql-workbench.msi
 .\mysql-workbench.msi
+Invoke-WebRequest "https://winscp.net/download/files/202005191145724e9754bdf14d2e1264cb6a18808598/WinSCP-5.17.5-Setup.exe" -OutFile WinSCP-Setup.exe
+.\WinSCP-Setup.exe
 ```
 
 ### Explore application source code
@@ -126,7 +128,14 @@ Check website is running http://<your_lb_> from internet.
 
 ### Modernize application to Azure platform services
 
-TODO: WebApp with application
+Create new Azure Web App and configure application deployment
+
+- name cowebapp in resource group rg-co-webapp with Code .Net Core 3.1 LTS on Windows
+- open FTPS connection - open Deployment Center and select FTP
+- copy application from bin/movie-app-list to FTP folder /site/wwwroot
+- change connection string on webapp - change appsettings.json MovieContext to your ADO.Net connection string
+
+Check website is running https://cowebapp.azurewebsites.net/ from internet.
 
 ### Extend application
 
