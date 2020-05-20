@@ -15,6 +15,24 @@ List of labs
 - Containers https://docs.microsoft.com/en-us/learn/paths/administer-containers-in-azure/
 - Serverless https://docs.microsoft.com/en-us/learn/paths/create-serverless-applications/
 
+## Explore Azure Portal
+
+Check Azure Portal setting
+
+- change language
+- portal menu to Docked
+
+Check Azure Cloud Shell icon
+
+- run command az
+- upload file
+
+Customize Azure Dashboard
+
+- pin resource group
+- pin graph/query from Azure Monitor
+- share dashboard
+
 ## Azure advanced lab
 
 ### Deploy Windows jump server
@@ -44,6 +62,10 @@ Invoke-WebRequest "https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workb
 Invoke-WebRequest "https://winscp.net/download/files/202005191145724e9754bdf14d2e1264cb6a18808598/WinSCP-5.17.5-Setup.exe" -OutFile WinSCP-Setup.exe
 .\WinSCP-Setup.exe
 ```
+
+**Advanced scenarios**
+
+- provision Azure Bastion server to access Windows server with HTTPS
 
 ### Explore application source code
 
