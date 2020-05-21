@@ -113,6 +113,11 @@ Check website is running http://<your_win_or_lx>  from your workstation. It's ge
 
 ![Web homepage](/src/az-vmweb/web-running.png)
 
+**Enable monitoring**
+
+- create new Azure Log Analytics workspace
+- open Virtual Machine resource and enable Insights under Monitoring section
+
 ### Deploy database as Azure platform services
 
 Create new Azure Database for MySQL and connect app
@@ -147,6 +152,7 @@ Check website is running http://<your_lb_> from internet.
 **Advanced scenarios**
 
 - create DNS zone - use Azure DNS to get public zone
+- integrate with Virtual Network to access database privately
 
 ### Modernize application to Azure platform services
 
@@ -182,3 +188,11 @@ Now let's check Function processing logs
 **Advanced scenarios**
 
 - process file uploaded to Azure Blob Storage (e.g. save to another destination)
+- create Azure LogicApps workflow for this event
+
+### Review security settings
+
+Open Azure Security Center
+
+- review recommendation
+- customize Default policy
