@@ -179,7 +179,7 @@ Check website is running https://cowebapp.azurewebsites.net/ from internet.
 
 ### Extend application - trigger event
 
-Create new Azure Function
+Create new Azure Function App
 
 - name cofunc in resource group rg-co-func with .Net Core 3.1 on Windows (because of Portal development)
 - create new function ProcessTrigger with Event Grid trigger and check Code+Test blade
