@@ -64,6 +64,8 @@ Invoke-WebRequest "https://winscp.net/download/files/202005191145724e9754bdf14d2
 Invoke-WebRequest "https://github.com/jjindrich/jjazure-training-az900/archive/master.zip" -OutFile app.zip
 ```
 
+*Reopen Windows Powershell to apply new PATH settings.*
+
 **Advanced scenarios**
 
 - provision Azure Bastion server to access Windows server with HTTPS
@@ -88,7 +90,7 @@ You can use scripts to speed up deployment.
 - create new virtual network vnet-comain 10.10.0.0/16 with subnets snet-comain-web 10.10.1.0/24 and snet-comain-db 10.10.2.0/24
 - peer network vnet-comain with your jump server network
 
-or use script
+or use ARM script (peering is not scripted)
 
 ```bash
 cd src/az-networking
@@ -104,11 +106,13 @@ az deployment group create -n Network -g rg-co-network --template-file deploy.js
     1. install IIS and ASP.NET Core Runtime Windows Hosting Bundle Installer
     2. configure IIS site
     3. copy application from bin/movie-app-list to IIS site folder
-- install application on Linux - https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx
+- install application on Linux (Ubuntu) - https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx
     1. install ASP.NET Core Runtime
     2. copy application from bin/movie-app-list to /app
     3. configure service for app
     4. configure Nginx
+
+*You can use following installation scripts for Windows [install.ps1](/src/az-vmweb/install.ps1) and Linux Ubuntu [install.sh](/src/az-vmweb/install.sh).*
 
 Check website is running http://<your_win_or_lx>  from your workstation. It's getting error because missing database.
 
