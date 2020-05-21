@@ -188,7 +188,14 @@ Now let's check Function processing logs
 **Advanced scenarios**
 
 - process file uploaded to Azure Blob Storage (e.g. save to another destination)
-- create Azure LogicApps workflow for this event
+
+### Extend application - add workflow
+
+Create Azure LogicApps
+
+- select resource group containing VM and select Events
+- select LogicApps and create new workflow - check trigger is Azure Event Grid and Authenticate
+- prepare workflow - e.g. create calendar event
 
 ### Review monitoring and security settings
 
