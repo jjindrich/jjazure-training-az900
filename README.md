@@ -37,6 +37,8 @@ Customize Azure Dashboard
 
 ### Deploy Windows jump server
 
+This Windows jump server will be our workstation for next steps in this lab.
+
 Deploy new Windows Server 2019 as workstation
 
 - use Azure portal - create new server with public IP address

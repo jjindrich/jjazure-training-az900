@@ -28,6 +28,7 @@ EOF
 sudo systemctl enable kestrel-myapp.service
 sudo systemctl start kestrel-myapp.service
 # sudo systemctl status kestrel-myapp.service
+# sudo journalctl -u kestrel-myapp.service
 
 # Install Nginx and configure
 sudo apt install nginx
