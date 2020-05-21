@@ -190,7 +190,13 @@ Now let's check Function processing logs
 - process file uploaded to Azure Blob Storage (e.g. save to another destination)
 - create Azure LogicApps workflow for this event
 
-### Review security settings
+### Review monitoring and security settings
+
+Open Azure Monitor
+
+- review Insight section
+- create new query in Logs
+- create new metrics Alert
 
 Open Azure Security Center
 
