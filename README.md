@@ -154,7 +154,7 @@ There are different options how to publish web to internet
 
 Check website is running http://<your_lb_> from internet.
 
-*Hint: Remember to update NSG rule to allowcHTTP traffic from Internet*
+*Hint: Remember to update NSG rule to allow HTTP traffic from Internet*
 
 **Advanced scenarios**
 
@@ -171,6 +171,11 @@ Create new Azure Web App and configure application deployment
 - change connection string on webapp - change appsettings.json MovieContext to your ADO.Net connection string
 
 Check website is running https://cowebapp.azurewebsites.net/ from internet.
+
+**Advanced scenarios**
+
+- configure autoscaling
+- explore Application Insights monitoring
 
 ### Extend application - trigger event
 
