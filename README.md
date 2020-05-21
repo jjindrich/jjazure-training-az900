@@ -105,8 +105,8 @@ az deployment group create -n Network -g rg-co-network --template-file deploy.js
 - create new Windows 2019 virtual machine cowmwebwin in resource group rg-co-vmwebwin *without publicIP and no public ports* network vnet-comain
 - create new Ubuntu 18.04 virtual machine cowmweblx in resource group rg-co-vmweblx *without publicIP and no public ports* network vnet-comain
 - install application on Windows - https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis
-    1. install IIS and ASP.NET Core Runtime Windows Hosting Bundle Installer
-    2. configure IIS site
+    1. install IIS and ASP.NET Core Runtime Windows Hosting Bundle Installer version 2.2
+    2. create new IIS site and Application Pool (No Managed Code)
     3. copy application from bin/movie-app-list to IIS site folder
 - install application on Linux (Ubuntu) - https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx
     1. install ASP.NET Core Runtime
