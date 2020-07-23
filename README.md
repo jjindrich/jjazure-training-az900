@@ -61,12 +61,24 @@ Invoke-WebRequest "https://aka.ms/vs/16/release/vc_redist.x64.exe" -OutFile vc_r
 .\vc_redist.x64.exe
 Invoke-WebRequest "https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-8.0.20-winx64.msi" -OutFile mysql-workbench.msi
 .\mysql-workbench.msi
-Invoke-WebRequest "https://winscp.net/download/files/202005191145724e9754bdf14d2e1264cb6a18808598/WinSCP-5.17.5-Setup.exe" -OutFile WinSCP-Setup.exe
+Invoke-WebRequest "https://cdn.winscp.net/files/WinSCP-5.17.6-Setup.exe?secure=cDqr5L3c6Aiww6Ua4tnDQQ==,1595490586" -OutFile WinSCP-Setup.exe
 .\WinSCP-Setup.exe
 Invoke-WebRequest "https://github.com/jjindrich/jjazure-training-az900/archive/master.zip" -OutFile app.zip
 ```
 
 *Reopen Windows Powershell to apply new PATH settings.*
+
+Download this repository and open it in Visual Studio Code
+
+```powershell
+Invoke-WebRequest "https://github.com/jjindrich/jjazure-training-az900/archive/master.zip" -OutFile app.zip
+```
+
+Check Azure CLI
+
+```powershell
+az vm list
+```
 
 **Advanced scenarios**
 
