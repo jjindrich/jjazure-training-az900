@@ -49,21 +49,28 @@ az group create -n rg-co-vmjump -l westeurope
 az vm create -n covmjump -g rg-co-vmjump --image win2019datacenter --admin-username azureuser
 ```
 
-Install Edge browser, Azure CLI, VS Code, MySql Workbench, WinScp into your Azure workstation
+Install Edge browser, Azure CLI, VS Code with ARM extension, MySql Workbench, WinScp, Windows Terminal into your Azure workstation
 
 ```powershell
 Invoke-WebRequest "https://c2rsetup.officeapps.live.com/c2r/downloadEdge.aspx?ProductreleaseID=Edge&platform=Default&version=Edge&source=EdgeStablePage&Channel=Stable&language=en" -OutFile MicrosoftEdgeSetup.exe
 .\MicrosoftEdgeSetup.exe /install
+
 Invoke-WebRequest "https://aka.ms/installazurecliwindows" -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; rm .\AzureCLI.msi
+
 Invoke-WebRequest "https://go.microsoft.com/fwlink/?Linkid=852157" -OutFile VSCodeSetup-x64.exe
 .\VSCodeSetup-x64.exe /silent
+code --install-extension msazurermtools.azurerm-vscode-tools
+
 Invoke-WebRequest "https://aka.ms/vs/16/release/vc_redist.x64.exe" -OutFile vc_redist.x64.exe
 .\vc_redist.x64.exe
+
 Invoke-WebRequest "https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-8.0.20-winx64.msi" -OutFile mysql-workbench.msi
 .\mysql-workbench.msi
+
 Invoke-WebRequest "https://cdn.winscp.net/files/WinSCP-5.17.6-Setup.exe?secure=cDqr5L3c6Aiww6Ua4tnDQQ==,1595490586" -OutFile WinSCP-Setup.exe
 .\WinSCP-Setup.exe
-Invoke-WebRequest "https://github.com/jjindrich/jjazure-training-az900/archive/master.zip" -OutFile app.zip
+
+Add-AppPackage -path https://github.com/microsoft/terminal/releases/download/v1.1.2021.0/Microsoft.WindowsTerminal_1.1.2021.0_8wekyb3d8bbwe.msixbundle
 ```
 
 *Reopen Windows Powershell to apply new PATH settings.*
