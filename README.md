@@ -84,6 +84,8 @@ az vm list
 
 - provision Azure Bastion server to access Windows server with HTTPS
 
+### Deployment schema
+
 ![Schema](/media/schema.png)
 
 ### Explore application source code
