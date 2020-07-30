@@ -165,7 +165,7 @@ Check website is running http://<your_win_or_lx> from your workstation. You can 
 
 **Advanced scenarios**
 
-- allow private communication with database - Private Endpoint to get private Ip
+- allow private communication with database - Private Endpoint to get private Ip in snet-comain-db subnet
 
 ### Publish web
 
@@ -182,7 +182,6 @@ Check website is running http://<your_lb_> from internet.
 **Advanced scenarios**
 
 - create DNS zone - use Azure DNS to get public zone
-- integrate with Virtual Network to access database privately
 
 ### Modernize application to Azure platform services
 
@@ -199,6 +198,7 @@ Check website is running https://cowebapp.azurewebsites.net/ from internet.
 
 - configure autoscaling
 - explore Application Insights monitoring
+- deploy application to Azure Kubernetes Service AKS
 
 ### Extend application - trigger event
 
