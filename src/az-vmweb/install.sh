@@ -6,6 +6,7 @@ wget https://dotnet.microsoft.com/download/dotnet-core/scripts/v1/dotnet-install
 chmod +x dotnet-install.sh
 sudo ./dotnet-install.sh --channel 2.2 --install-dir /cli
 
+# !!! make sure /app is prepared with application !!!
 # Service dotNet app
 sudo rm /etc/systemd/system/kestrel-myapp.service
 cat << EOF | sudo tee -a /etc/systemd/system/kestrel-myapp.service

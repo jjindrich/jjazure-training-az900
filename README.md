@@ -132,8 +132,8 @@ az deployment group create -n Network -g rg-co-network --template-file deploy.js
     2. create new IIS site and Application Pool (No Managed Code)
     3. copy application from bin/movie-app-list to IIS site folder
 - install application on Linux (Ubuntu) - https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx
-    1. install ASP.NET Core Runtime
-    2. copy application from bin/movie-app-list to /app
+    1. copy application from bin/movie-app-list to /app (use WinScp to copy files)
+    2. install ASP.NET Core Runtime
     3. configure service for app
     4. configure Nginx
 
