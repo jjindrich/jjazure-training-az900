@@ -69,8 +69,6 @@ Invoke-WebRequest "https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workb
 
 Invoke-WebRequest "https://cdn.winscp.net/files/WinSCP-5.17.6-Setup.exe?secure=cDqr5L3c6Aiww6Ua4tnDQQ==,1595490586" -OutFile WinSCP-Setup.exe
 .\WinSCP-Setup.exe
-
-Add-AppPackage -path https://github.com/microsoft/terminal/releases/download/v1.1.2021.0/Microsoft.WindowsTerminal_1.1.2021.0_8wekyb3d8bbwe.msixbundle
 ```
 
 *Reopen Windows Powershell to apply new PATH settings.*
@@ -81,7 +79,7 @@ Download this repository and open it in Visual Studio Code
 Invoke-WebRequest "https://github.com/jjindrich/jjazure-training-az900/archive/master.zip" -OutFile app.zip
 ```
 
-Check Azure CLI
+Check Azure CLI on your jump virtual server
 
 ```powershell
 az vm list
