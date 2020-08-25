@@ -121,6 +121,8 @@ az group create -n rg-co-network -l westeurope
 az deployment group create -n Network -g rg-co-network --template-file deploy.json --parameters deploy.params.json
 ```
 
+Check ARM basics https://github.com/azurecz/azuretechacademy-hybridit-labs-day2#arm-template-basics
+
 **Deploy web application** with Azure Portal
 
 - create new Windows 2019 virtual machine cowmwebwin in resource group rg-co-vmwebwin *without publicIP and no public ports* network vnet-comain
@@ -192,6 +194,20 @@ Create new Azure Web App and configure application deployment
 
 Check website is running https://cowebapp.azurewebsites.net/ from internet.
 
+### Review monitoring and security settings
+
+Open Azure Monitor
+
+- review Insight section on virtual machine
+- create new query in Logs
+- create new metrics Alert
+- hands-on instructions https://github.com/azurecz/azuretechacademy-hybridit-labs-day1#vm-monitoring
+
+Open Azure Security Center
+
+- review recommendation
+- customize Default policy
+
 **Advanced scenarios**
 
 - configure autoscaling
@@ -229,16 +245,3 @@ Create Azure LogicApps
 - select resource group containing VM and select Events
 - select LogicApps and create new workflow - check trigger is Azure Event Grid and Authenticate
 - prepare workflow - e.g. create calendar event
-
-### Review monitoring and security settings
-
-Open Azure Monitor
-
-- review Insight section
-- create new query in Logs
-- create new metrics Alert
-
-Open Azure Security Center
-
-- review recommendation
-- customize Default policy
