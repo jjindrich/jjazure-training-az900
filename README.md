@@ -196,12 +196,25 @@ Check website is running https://cowebapp.azurewebsites.net/ from internet.
 
 ### Review monitoring and security settings
 
-Open Azure Monitor
+Explore Azure Monitor
 
 - review Insight section on virtual machine
-- create new query in Logs
-- create new metrics Alert
-- hands-on instructions https://github.com/azurecz/azuretechacademy-hybridit-labs-day1#vm-monitoring
+- explore metrics, pin chart to dashboard
+- create new query in Logs, check [Kusto language reference](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/query-language)
+- create new Alert for metric or query
+- create new Azure Monitor Workbook
+
+Query sample
+
+```kusto
+Perf 
+| where InstanceName == "omsagent"
+| where CounterName == "Used Memory kBytes"
+| summarize cpuLoad=avg(CounterValue) by Computer, TimeGenerated
+| render timechart 
+```
+
+You can check this [Azure Academy training lab](https://github.com/azurecz/azuretechacademy-hybridit-labs-day1#vm-monitoring).
 
 Open Azure Security Center
 
