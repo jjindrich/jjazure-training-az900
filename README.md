@@ -227,6 +227,55 @@ Open Azure Security Center
 - explore Application Insights monitoring
 - deploy application to Azure Kubernetes Service AKS
 
+### Automate operations - run scheduled event
+
+Create new Azure Function App
+
+- name coautomat in resource group rg-co-func with PowerShell on Windows (because of Portal development)
+- create new function ReportVMStatus with Timer trigger and check Code+Test blade
+- enable managed Identity for Azure Function and setup permissions (e.g. Reader on subscription)
+- add following source code
+
+```powershell
+# Input bindings are passed in via param block.
+param($Timer)
+
+try  {
+    # Get the current universal time in the default string format.
+    $currentUTCtime = (Get-Date).ToUniversalTime()
+
+    # The 'IsPastDue' property is 'true' when the current function invocation is later than scheduled.
+    if ($Timer.IsPastDue) {
+        Write-Host "PowerShell timer is running late!"
+    }
+
+    # Check Azure connectivity
+    $AzSubscriptionContext = Get-AzContext -ErrorAction SilentlyContinue
+    if ($null -eq $AzSubscriptionContext) {
+        throw "This Azure Function need a managed system identity"
+    }
+    else {
+        Write-Host ("Connected to Azure !")
+    }
+
+    # list VMs
+    $VMs = Get-AzVM
+    foreach ($VirtualMachine in $VMs)
+    {
+        # call to get VM status
+        $VM = Get-AzVM -ResourceGroupName $VirtualMachine.ResourceGroupName -Name $VirtualMachine.Name -Status
+        Write-Host ("VM status name: $($VM.Name) has status: $($VM.Statuses[1].Code)")
+    }
+}
+catch
+{
+    throw $_.Exception.Message
+}
+```
+
+Click Test/Run button and check results
+![Function log](/src/az-func/func-automat.png)
+
 ### Extend application - trigger event
 
 Create new Azure Function App
