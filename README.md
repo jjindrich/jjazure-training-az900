@@ -169,13 +169,13 @@ Check website is running http://<your_win_or_lx> from your workstation. You can 
 
 ### Publish web
 
-There are different options how to publish web to internet
+There are different options how to [publish web to internet](https://docs.microsoft.com/en-us/azure/frontdoor/front-door-lb-with-azure-app-delivery-suite)
 
 - Azure LoadBalancer - L4 load balancer
 - Azure Application Gateway - L7 HTTP/HTTPS loadbalancer
 - Azure FrontDoor - global HTTP/HTTPS loadbalancer
 
-Check website is running http://<your_lb_> from internet.
+Configure one of the solution and check website is running http://<your_lb_> from internet.
 
 *Hint: Remember to update NSG rule to allow HTTP traffic from Internet*
 
