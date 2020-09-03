@@ -88,6 +88,7 @@ az vm list
 **Advanced scenarios**
 
 - provision Azure Bastion server to access Windows server with HTTPS
+- use Virtual Machine Managed Identity to access Azure resource (instead using your credentials) and run "az login --identity"
 
 ### Deployment schema
 
