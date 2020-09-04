@@ -49,41 +49,34 @@ az group create -n rg-co-vmjump -l westeurope
 az vm create -n covmjump -g rg-co-vmjump --image win2019datacenter --admin-username azureuser
 ```
 
-Install Edge browser, Azure CLI, VS Code with ARM extension, MySql Workbench, WinScp, Windows Terminal into your Azure workstation
+Connect into jump server using RDP.
+
+Download this repository and extract it
 
 ```powershell
-Invoke-WebRequest "https://c2rsetup.officeapps.live.com/c2r/downloadEdge.aspx?ProductreleaseID=Edge&platform=Default&version=Edge&source=EdgeStablePage&Channel=Stable&language=en" -OutFile MicrosoftEdgeSetup.exe
-.\MicrosoftEdgeSetup.exe /install
+cd .\Documents\
+Invoke-WebRequest "https://github.com/jjindrich/jjazure-training-az900/archive/master.zip" -OutFile app.zip
+```
 
-Invoke-WebRequest "https://aka.ms/installazurecliwindows" -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; rm .\AzureCLI.msi
+Install Edge browser, Azure CLI, VS Code with ARM extension, MySql Workbench, WinScp, Windows Terminal into your Azure workstation.
 
-Invoke-WebRequest "https://go.microsoft.com/fwlink/?Linkid=852157" -OutFile VSCodeSetup-x64.exe
-.\VSCodeSetup-x64.exe /silent
-code --install-extension msazurermtools.azurerm-vscode-tools
+Script is prepared for automated installation, open PowerShell as administrator and run following
 
-Invoke-WebRequest "https://aka.ms/vs/16/release/vc_redist.x64.exe" -OutFile vc_redist.x64.exe
-.\vc_redist.x64.exe
-
-Invoke-WebRequest "https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-8.0.20-winx64.msi" -OutFile mysql-workbench.msi
-.\mysql-workbench.msi
-
-Invoke-WebRequest "https://cdn.winscp.net/files/WinSCP-5.17.6-Setup.exe?secure=cDqr5L3c6Aiww6Ua4tnDQQ==,1595490586" -OutFile WinSCP-Setup.exe
-.\WinSCP-Setup.exe
+```powershell
+cd .\app\jjazure-training-az900-master\src\az-vmjump\
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted
+.\install-tools.ps1
 ```
 
 *Reopen Windows Powershell to apply new PATH settings.*
-
-Download this repository and open it in Visual Studio Code
-
-```powershell
-Invoke-WebRequest "https://github.com/jjindrich/jjazure-training-az900/archive/master.zip" -OutFile app.zip
-```
 
 Check Azure CLI on your jump virtual server
 
 ```powershell
 az vm list
 ```
+
+Run Visual Studio Code and open downloaded repository and check the structure.
 
 **Advanced scenarios**
 
@@ -126,8 +119,8 @@ Check ARM basics https://github.com/azurecz/azuretechacademy-hybridit-labs-day2#
 
 **Deploy web application** with Azure Portal
 
-- create new Windows 2019 virtual machine cowmwebwin in resource group rg-co-vmwebwin *without publicIP and no public ports* network vnet-comain
-- create new Ubuntu 18.04 virtual machine cowmweblx in resource group rg-co-vmweblx *without publicIP and no public ports* network vnet-comain
+- create new Windows 2019 virtual machine covmwebwin in resource group rg-co-vmwebwin *without publicIP and no public ports* network vnet-comain
+- create new Ubuntu 18.04 virtual machine covmweblx in resource group rg-co-vmweblx *without publicIP and no public ports* network vnet-comain
 - install application on Windows - https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis
     1. install IIS and ASP.NET Core Runtime Windows Hosting Bundle Installer version 2.2
     2. create new IIS site and Application Pool (No Managed Code)
