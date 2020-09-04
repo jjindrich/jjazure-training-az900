@@ -76,7 +76,11 @@ Check Azure CLI on your jump virtual server
 az vm list
 ```
 
-Run Visual Studio Code and open downloaded repository and check the structure.
+Run Visual Studio Code
+
+- open downloaded repository
+- install extension "msazurermtools.azurerm-vscode-tools" for ARM coding
+- check code repository structure
 
 **Advanced scenarios**
 
