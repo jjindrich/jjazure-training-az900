@@ -205,11 +205,10 @@ Explore Azure Monitor
 Query sample
 
 ```kusto
-Perf 
-| where InstanceName == "omsagent"
-| where CounterName == "Used Memory kBytes"
-| summarize cpuLoad=avg(CounterValue) by Computer, TimeGenerated
-| render timechart 
+Perf
+| where ObjectName == "Processor" and InstanceName == "_Total"
+| summarize cpuLoad=avg(CounterValue) by Computer, bin(TimeGenerated, 5m)
+| render timechart
 ```
 
 You can check this [Azure Academy training lab](https://github.com/azurecz/azuretechacademy-hybridit-labs-day1#vm-monitoring).
